@@ -59,6 +59,7 @@ class SimpleServer {
         writer.println("Content-type: text/html");
         writer.println("");
 
+
         // Body of our response
         writer.println("<h1>Some cool response!</h1>");
 
