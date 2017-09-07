@@ -56,12 +56,12 @@ class SimpleServer {
         writer.println("HTTP/1.1 200 OK");
         writer.println("Server: TEST");
         writer.println("Connection: close");
-        writer.println("Content-type: text/html");
+        writer.println("Content-type: application/json");
         writer.println("");
 
 
         // Body of our response
-        writer.println("<h1>Some cool response!</h1>");
+        writer.println("{\"hello\" : \"world\"}");
 
         dong.close();
       }
