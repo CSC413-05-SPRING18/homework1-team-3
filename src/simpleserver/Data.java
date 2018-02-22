@@ -1,4 +1,4 @@
-package response;
+package simpleserver;
 
 public class Data {
 

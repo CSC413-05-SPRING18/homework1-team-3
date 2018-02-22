@@ -1,0 +1,54 @@
+{
+  "users":[
+    {
+      "username" : "rey",
+      "userid" : 0
+    },
+    {
+      "username" : "lukeSkywalker",
+      "userid" : 67
+    },
+    {
+      "username" : "daenerysStormborn",
+      "userid" : 234
+    },
+    {
+      "username" : "khalDrogo",
+      "userid" : 235
+    },
+    {
+      "username" : "batman",
+      "userid" : 222
+    },
+    {
+      "username" : "aquaman",
+      "userid" : 112
+    },
+    {
+      "username" : "dexter",
+      "userid" : 653
+    }
+  ],
+  "posts":[
+    {
+      "postid":0,
+      "userid": 67,
+      "data": "I lost my lightsaber, anyone seen it?"
+    },
+    {
+      "postid":1,
+      "userid": 235,
+      "data": "Found lightsaber, looking for owner"
+    },
+    {
+      "postid":3,
+      "userid": 234,
+      "data": "Guess How many dragons I have"
+    },
+    {
+      "postid":4,
+      "userid": 653,
+      "data": "Who has been in my Laboratory"
+    }
+  ]
+}

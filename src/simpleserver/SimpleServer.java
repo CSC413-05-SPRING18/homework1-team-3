@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
+
 class SimpleServer {
 
   public static void main(String[] args) throws IOException {
@@ -14,6 +15,7 @@ class SimpleServer {
     try {
       ding = new ServerSocket(1299);
       System.out.println("Opened socket " + 1299);
+      ResponseBuilder builder = new ResponseBuilder();
       while (true) {
 
         // keeps listening for new clients, one at a time
@@ -32,8 +34,10 @@ class SimpleServer {
           String line = in.readLine();
           System.out.println("----------REQUEST START---------");
           System.out.println(line);
+
           // read only headers
           line = in.readLine();
+
           while (line != null && line.trim().length() > 0) {
             int index = line.indexOf(": ");
             if (index > 0) {
@@ -43,6 +47,7 @@ class SimpleServer {
             }
             line = in.readLine();
           }
+
           System.out.println("----------REQUEST END---------\n\n");
         } catch (IOException e) {
           System.out.println("Error reading");
@@ -61,6 +66,7 @@ class SimpleServer {
 
 
         // Body of our response
+        Response response = builder.build();
         writer.println("{\"hello\" : \"world\"}");
 
         dong.close();

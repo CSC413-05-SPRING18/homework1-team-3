@@ -1,4 +1,6 @@
-package response;
+package simpleserver;
+import com.google.gson.*;
+import java.io.*;
 
 public class ResponseBuilder {
 
@@ -10,7 +12,35 @@ public class ResponseBuilder {
     OK,
     ERROR_GENERAL,
   }
-  
+  //creating a constructor
+  public ResponseBuilder() {
+    readJson();
+  }
+  //uses gson to read json
+
+  private void readJson(){
+    System.out.println("Lets go");
+    String readData = "data.json";
+
+    try{
+      FileReader fileReader = new FileReader(readData);
+      BufferedReader bufferedReader = new BufferedReader(fileReader);
+      String line = "";
+      String allLines = "";
+
+      while ((line = bufferedReader.readLine()) != null) {
+        allLines += line;
+
+      }
+      System.out.println(allLines);
+
+    } catch(Exception e){
+      System.out.println(e.toString());
+
+    }
+
+  }
+
   public void setStatus(StatusCode statusCode) {
     this.statusCode = statusCode;
   }
