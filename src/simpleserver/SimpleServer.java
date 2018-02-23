@@ -15,7 +15,7 @@ class SimpleServer {
     try {
       ding = new ServerSocket(1299);
       System.out.println("Opened socket " + 1299);
-      ResponseBuilder builder = new ResponseBuilder();
+     ResponseBuilder builder = new ResponseBuilder();
       while (true) {
 
         // keeps listening for new clients, one at a time
