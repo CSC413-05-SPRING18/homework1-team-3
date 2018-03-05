@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-
 import java.io.*;
 import java.util.*;
 
@@ -30,7 +28,8 @@ public class ResponseBuilder {
   }
 
 
-  public void setStatus(StatusCode statusCode) {
+  public void setStatus(StatusCode statusCode)
+  {
     this.statusCode = statusCode;
   }
 

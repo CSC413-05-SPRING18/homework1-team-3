@@ -1,7 +1,5 @@
 package Processor;
 
-public class PostProcessor{
-
 import DataModel.Response;
 import DataModel.ResponseBuilder;
 import DataModel.Post;

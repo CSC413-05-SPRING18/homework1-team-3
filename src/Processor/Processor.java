@@ -1,9 +1,6 @@
 package Processor;
 
 
-public abstract class Processor {
-
-    public abstract String process();
 
 public abstract class Processor {  //abstract: have to subclass to use it, final: can't subclass it
 

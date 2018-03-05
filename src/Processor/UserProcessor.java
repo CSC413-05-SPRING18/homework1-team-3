@@ -1,15 +1,5 @@
 package Processor;
 
-public class UserProcessor extends Processor {
-
-
-
-    @Override
-    public String process() {
-        return "{\"User\": 0}";
-    }
-}
-
 import DataModel.Post;
 import DataModel.ResponseBuilder;
 import DataModel.User;
@@ -30,12 +20,12 @@ public class UserProcessor extends Processor {
 
         //if no arguments, return all users
         if (this.args == null) {
-            User allUsers[] = User.getAll();
             responseBuilder.setStatus("OK");
+            User allUsers[] = User.getAll();
             responseBuilder.setData(allUsers);
         } else {
 
-            String[] argParts = new String[0];
+            String[] argParts = this.args.split("=");
             ArrayList<String> argNames = new ArrayList<String>();
             ArrayList<String> argValues = new ArrayList<String>();
 
