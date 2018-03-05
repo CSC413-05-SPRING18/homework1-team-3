@@ -15,7 +15,10 @@ public class ResponseBuilder {
   private StatusCode statusCode;
   private Gson gson;
 
-  public enum StatusCode {
+    public void getUsers() {
+    }
+
+    public enum StatusCode {
     OK,
     ERROR_GENERAL,
   }
