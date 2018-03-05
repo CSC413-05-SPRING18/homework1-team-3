@@ -1,5 +1,12 @@
 package simpleserver;
 
+import DataModel.Post;
+import DataModel.User;
+import Processor.Processor;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -12,6 +19,34 @@ class SimpleServer {
     ServerSocket ding;
     Socket dong = null;
     String resource = null;
+    String mainRequestLine = null;
+    User[] users;
+    Post[] posts;
+
+    Gson gson = new Gson();
+    BufferedReader br;
+    try {
+      br = new BufferedReader(new FileReader(("src/data.json")));
+      JsonParser jsonParser = new JsonParser();
+      JsonObject obj = jsonParser.parse(br).getAsJsonObject();
+
+      users = gson.fromJson(obj.get("users"), User[].class);
+      posts = gson.fromJson(obj.get("posts"), Post[].class);
+
+      for (int i = 0; i < users.length; i++){
+        users[i].register();
+      }
+      User.setAll(users);
+
+      for (int i = 0; i < posts.length; i++){
+        posts[i].Register();
+      }
+      Post.setAll(posts);
+
+    }catch (FileNotFoundException e){
+      System.exit(1);
+    }
+
     try {
       ding = new ServerSocket(1299);
       System.out.println("Opened socket " + 1299);
@@ -64,12 +99,13 @@ class SimpleServer {
         writer.println("Content-type: application/json");
         writer.println("");
 
+        String linePartarray[] = mainRequestLine.split(" ");
 
+        String resourseString = linePartarray[1];
+
+        Processor processor = Processor.ProcessorFactory.getProcessor(resourseString);
         // Body of our response
-        builder.setStatus(ResponseBuilder.StatusCode.OK);
-        Response response = builder.build();
-        writer.println("{\"hello\" : \"world\"}");
-
+        writer.println(processor.process());
         dong.close();
       }
     } catch (IOException e) {
